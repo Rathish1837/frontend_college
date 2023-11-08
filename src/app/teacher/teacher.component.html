@@ -1,0 +1,42 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <div class="container">
+        <h1>Teacher Data</h1>
+        <form [formGroup]="TeacherForm">
+        <label>Name</label>
+        <input type="text" placeholder="Enter your name" formControlName="Name">
+        <label>Department</label>
+        <input type="text" placeholder="Enter your Department here" formControlName="Department">
+        <label>Qualification</label>
+        <input type="text" placeholder="Enter your Qualification here" formControlName="Qualification">
+        <label>Mobile</label>
+        <input type="number" placeholder="Enter your mobile number" formControlName="mobile">
+        <input type="submit" value="submit" (click)="submit()">
+    </form>
+    </div>
+
+    <br/>
+<table border="1">
+    <thead>
+        <tr>
+         <th>Sl.No</th>
+         <th>Name</th>
+         <th>Department</th>
+         <th>Qualification</th>
+         <th>Mobile</th>
+         <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of this.teacherData let i = index">
+            <td>{{i +1}}</td>
+            <td>{{data.Name}}</td>
+            <td>{{data.Department}}</td>
+            <td>{{data.Qualification}}</td>
+            <td>{{data.mobile}}</td>
+            <td><i class="fa fa-edit" routerLink="../teacherEdit" [queryParams]="{id: data._id}"></i><i class="fa fa-trash"(click)=deleteTeacherData(data._id)></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
